@@ -1,0 +1,210 @@
+/* Organizar o espaçamento de toda a página no navegador */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Retirar as bolinhas criadas pela tag <ul> do HTML */
+ul {
+    list-style: none;
+}
+
+/* Colocar um fundo na página */
+body {
+    background-image: url(./assets/Fundo.jpg);
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #121214;
+}
+
+/* Modificar toda a fonte dos textos do corpo da página */
+body * {
+    font-family: 'inter', sans-serif ;
+    line-height: 160%
+}
+
+header div{
+    width: 120px;
+    margin: auto; /* margin: auto para pôr a <div> sempre no centro da página */
+
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    border-radius: 50%;
+
+    /* display: flex; só para posicionar a <div> no centro. Como só existe um elemento na <div>, o flex é usado para alinhá-la no centro. */
+    display: flex;
+
+    /* o padding (preenchimento) preenche um espaço com uma cor sólida só se houver uma cor. Caso não, o preenchimento será com uma cor transparente. */
+    padding: 4px;
+
+    transition: transform .3s;
+    /* aplicar uma transição de 3 segundos no transform da <div> da tag <header> */
+}
+
+header div:hover {
+
+    /* (header div:hover) adiciona propriedades a uma tag. Nesse caso, a tag <div> que está em <header> */
+
+    transform: scale(1.1);
+    /* transform para transformar algo. O que? a escala da <div> da tag <header> */
+}
+
+header div img{ 
+    /* a img está sobreposta na <div> */
+
+    width: 100%; /* width 100% em relação a que? Ao tamanho da <div> que a imagem está. No caso, 120px. */
+    border-radius: 50%;
+    
+}
+
+header{
+    padding-top: 32px;
+
+    /* text-align: center; não funciona com <div>. Ela não tem propriedade de texto */
+
+    height: calc(120px + 32px);
+    /* calc para fazer um cálculo */
+}
+
+/* Só para observar melhor os limites das bordas da página */
+/* main * {
+    border: 1px solid red;
+} */
+
+/* Definir um tamanho máximo para o menu main */
+main {
+    /* Tamanho */
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto;
+
+    display: grid;
+    gap: 24px;
+}
+
+
+section  {
+    /* Cor dos textos */
+    color: white;
+    
+    /* Bordas coloridas dos cartões */
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+/* Criar o fundo dos cartões da página */
+section div {
+    /* Cor */
+    background-color: #2A2634;
+    /* Preenchimento */
+    padding: 32px;
+    /* Preenchimento da parte de cima */
+    padding-top: 24px;
+    /* Arredondamento das bordas */
+    border-radius: 8px ;
+
+    
+}
+
+/* Espaçamento das letras dos títulos <h2> das sections da página */
+section h2 {
+    letter-spacing: -0.47px;
+}
+
+/* Espaçamento das letras dos parágrafos <p> das sections da página */
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+
+section ul {
+    /* Organizar os elementos das listas <ul> da página lado a lado */
+    display: flex;
+    /* Organizar os elementos da <ul> em lista quando o limite do tamanho do cartão for atingido */
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+
+    
+}
+
+section ul li{
+    transition: transform .3s;
+}
+
+section ul li:hover{
+    transform: scale(1.1);
+}
+
+/* Modificar as imagens da <ul> classificada como (class="game-list") */
+.game-list img {
+    /* Tamanho da imagem */
+    width: 90px;
+    /* Arredondamento das bordas */
+    border-radius: 8px;
+}
+
+/* Modificar as imagens da <ul> classificada como (class="transmitions-list") */
+.transmitions-list img {
+     /* Arredondamento das bordas */
+    border-radius: 50%;
+    /* Tamanho da imagem */
+    width: 58px;
+    border: 1px solid #443E54;
+}
+
+/* ANIMATION */
+
+header div{
+    animation: fromTop .7s 1s backwards;
+    /* O delay pode ficar depois do tempo de duração da animação */
+    /* O backwards puxa a animação para cima do header */
+    
+}
+
+main section{
+    animation: fromBottom .7s backwards;
+}
+
+
+main section:nth-child(1) {
+    /* [nth-child] é para pegar o "número/nome" de uma tag que está dentro de uma caixa (outra tag) seguida de outras tags. A primeira é o número 1*/
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+}
+ 
+/* keyframes cria uma animação */
+@keyframes fromTop{
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom{
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
